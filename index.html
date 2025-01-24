@@ -4,60 +4,59 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Khosuki Laundry Sepatu</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bungee&display=swap"
+      rel="stylesheet"
+    />
     <style>
       :root {
-        --primary-color: #ff1b8d;
-        --secondary-color: #00b4d8;
-        --accent-color: #ffd700;
-        --bg-color: #e8f4f8;
-        --text-color: #1a1a1a;
+        --primary: #235789;
+        --powder: #fdfffc;
+        --red: #ed1c24;
+        --yellow: #f1d302;
+        --black: #020100;
       }
 
       body {
-        font-family: "Poppins", sans-serif;
+        font-family: "Arial", sans-serif;
         margin: 0;
         padding: 0;
-        background-color: var(--bg-color);
-        background-image: linear-gradient(
-          135deg,
-          var(--bg-color) 0%,
-          #ffffff 100%
-        );
-        color: var(--text-color);
+        background-color: var(--powder);
+        color: var(--black);
         line-height: 1.6;
       }
 
+      h1,
+      h2,
+      h3 {
+        font-family: "Bungee", cursive;
+        letter-spacing: 1px;
+      }
+
       header {
-        background-color: var(--primary-color);
-        color: white;
+        background-color: var(--primary);
+        color: var(--powder);
         padding: 3rem 2rem;
         text-align: center;
-        position: relative;
-        overflow: hidden;
       }
 
-      header::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: radial-gradient(
-          circle at 30% 107%,
-          var(--secondary-color) 0%,
-          var(--primary-color) 90%
-        );
-        opacity: 0.8;
-        z-index: 0;
+      .location-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--powder);
+        color: var(--primary);
+        text-decoration: none;
+        padding: 0.8rem 1.5rem;
+        border-radius: 50px;
+        font-weight: 600;
+        margin-top: 1.5rem;
+        transition: transform 0.2s;
       }
 
-      h1 {
-        position: relative;
-        z-index: 1;
-        font-size: 3rem;
-        margin: 0;
-        font-weight: 800;
+      .location-btn:hover {
+        transform: translateY(-2px);
+        background: var(--yellow);
       }
 
       section {
@@ -67,17 +66,41 @@
       }
 
       h2 {
-        color: var(--primary-color);
+        color: var(--lapis);
         text-align: center;
         font-size: 2.5rem;
         margin-bottom: 2rem;
       }
 
-      .price-section {
-        background: white;
+      .hours-section {
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+
+      .hours-card {
+        background: var(--powder);
+        border: 3px solid var(--primary);
         border-radius: 20px;
         padding: 2rem;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        display: inline-block;
+        box-shadow: 8px 8px 0 var(--yellow);
+      }
+
+      .hours-item {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        font-size: 1.5rem;
+        color: var(--lapis);
+        font-weight: 600;
+      }
+
+      .price-section {
+        background: var(--powder);
+        border: 3px solid var(--lapis);
+        border-radius: 20px;
+        padding: 2rem;
+        box-shadow: 8px 8px 0 var(--yellow);
       }
 
       .service-category {
@@ -85,7 +108,7 @@
       }
 
       .service-category h3 {
-        color: var(--secondary-color);
+        color: var(--red);
         font-size: 1.8rem;
         margin-bottom: 1.5rem;
       }
@@ -95,7 +118,7 @@
         justify-content: space-between;
         align-items: center;
         padding: 1rem;
-        border-bottom: 1px solid #eee;
+        border-bottom: 2px solid var(--primary);
       }
 
       .service-name {
@@ -104,32 +127,34 @@
 
       .service-price {
         font-weight: bold;
-        color: var(--primary-color);
-      }
-
-      .note {
-        font-size: 0.9rem;
-        color: #666;
-        margin-top: 1rem;
-        padding: 1rem;
-        background: #f8f8f8;
-        border-radius: 8px;
+        color: var(--red);
       }
 
       .highlight {
-        background-color: var(--accent-color);
-        color: var(--text-color);
+        background-color: var(--yellow);
+        color: var(--black);
         padding: 0.5rem 1rem;
         border-radius: 8px;
         font-weight: bold;
       }
 
+      .note {
+        font-size: 0.9rem;
+        color: var(--lapis);
+        margin-top: 1rem;
+        padding: 1rem;
+        background: var(--powder);
+        border: 2px solid var(--yellow);
+        border-radius: 8px;
+      }
+
       footer {
-        background-color: var(--primary-color);
-        color: white;
+        background-color: var(--primary);
+        color: var(--powder);
         text-align: center;
         padding: 2rem;
         margin-top: 3rem;
+        font-family: "Bungee", cursive;
       }
 
       @media (max-width: 768px) {
@@ -151,7 +176,53 @@
   <body>
     <header>
       <h1>Khosuki Laundry Sepatu</h1>
+      <a
+        href="https://maps.app.goo.gl/3FijY6Jn1rKAPz4o6"
+        target="_blank"
+        class="location-btn"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path
+            d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"
+          />
+          <circle cx="12" cy="10" r="3" />
+        </svg>
+        Lokasi Kami
+      </a>
     </header>
+
+    <section class="hours-section">
+      <h2>Jam Operasional</h2>
+      <div class="hours-card">
+        <div class="hours-item">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <circle cx="12" cy="12" r="10" />
+            <polyline points="12 6 12 12 16 14" />
+          </svg>
+          <span>15:00 - 21:00</span>
+        </div>
+      </div>
+    </section>
 
     <section class="price-section">
       <h2>Price List</h2>
