@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Khosuki Laundry Sepatu</title>
+    <style>
+      :root {
+        --primary-color: #ff1b8d;
+        --secondary-color: #00b4d8;
+        --accent-color: #ffd700;
+        --bg-color: #e8f4f8;
+        --text-color: #1a1a1a;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: var(--bg-color);
+        background-image: linear-gradient(
+          135deg,
+          var(--bg-color) 0%,
+          #ffffff 100%
+        );
+        color: var(--text-color);
+        line-height: 1.6;
+      }
+
+      header {
+        background-color: var(--primary-color);
+        color: white;
+        padding: 3rem 2rem;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      header::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(
+          circle at 30% 107%,
+          var(--secondary-color) 0%,
+          var(--primary-color) 90%
+        );
+        opacity: 0.8;
+        z-index: 0;
+      }
+
+      h1 {
+        position: relative;
+        z-index: 1;
+        font-size: 3rem;
+        margin: 0;
+        font-weight: 800;
+      }
+
+      section {
+        padding: 3rem 1.5rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      h2 {
+        color: var(--primary-color);
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+      }
+
+      .price-section {
+        background: white;
+        border-radius: 20px;
+        padding: 2rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .service-category {
+        margin-bottom: 3rem;
+      }
+
+      .service-category h3 {
+        color: var(--secondary-color);
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .service-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+        border-bottom: 1px solid #eee;
+      }
+
+      .service-name {
+        flex: 1;
+      }
+
+      .service-price {
+        font-weight: bold;
+        color: var(--primary-color);
+      }
+
+      .note {
+        font-size: 0.9rem;
+        color: #666;
+        margin-top: 1rem;
+        padding: 1rem;
+        background: #f8f8f8;
+        border-radius: 8px;
+      }
+
+      .highlight {
+        background-color: var(--accent-color);
+        color: var(--text-color);
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+        font-weight: bold;
+      }
+
+      footer {
+        background-color: var(--primary-color);
+        color: white;
+        text-align: center;
+        padding: 2rem;
+        margin-top: 3rem;
+      }
+
+      @media (max-width: 768px) {
+        h1 {
+          font-size: 2rem;
+        }
+        h2 {
+          font-size: 2rem;
+        }
+        .service-category h3 {
+          font-size: 1.5rem;
+        }
+        section {
+          padding: 2rem 1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Khosuki Laundry Sepatu</h1>
+    </header>
+
+    <section class="price-section">
+      <h2>Price List</h2>
+
+      <div class="service-category">
+        <h3>Fast Clean <span class="highlight">3-4 Jam</span></h3>
+        <div class="service-item">
+          <span class="service-name">Clean Midsol and Upper</span>
+          <span class="service-price">Rp 25k</span>
+        </div>
+        <div class="service-item">
+          <span class="service-name">Sepatu wanita (Flat Shoes and Heals)</span>
+          <span class="service-price">Rp 20k</span>
+        </div>
+        <div class="note">
+          *Pada sepatu putih cara fastclean tidak akan maksimal pada sepatu.
+          Tanpa pewangi
+        </div>
+      </div>
+
+      <div class="service-category">
+        <h3>Deep Clean <span class="highlight">2-3 Hari</span></h3>
+        <div class="service-item">
+          <span class="service-name">Semua jenis sepatu kecuali boots</span>
+          <span class="service-price">Rp 35k</span>
+        </div>
+        <div class="service-item">
+          <span class="service-name">Sepatu Boots</span>
+          <span class="service-price">Rp 40k</span>
+        </div>
+        <div class="service-item">
+          <span class="service-name">Leather/Kulit</span>
+          <span class="service-price">Rp 40k</span>
+        </div>
+        <div class="service-item">
+          <span class="service-name">Leather Boots</span>
+          <span class="service-price">Rp 50k</span>
+        </div>
+        <div class="service-item">
+          <span class="service-name">White shoes (dominan putih)</span>
+          <span class="service-price">Rp 45k</span>
+        </div>
+        <div class="note">*Plus Pewangi dan anti bakteri</div>
+      </div>
+
+      <div class="service-category">
+        <h3>Deep Clean One Day</h3>
+        <div class="service-item">
+          <span class="service-name"
+            >Semua jenis sepatu kecuali boots dan sepatu dominan putih</span
+          >
+          <span class="service-price">Rp 45k</span>
+        </div>
+      </div>
+
+      <div class="service-category">
+        <h3>More <span class="highlight">3-7 Hari</span></h3>
+        <div class="service-item">
+          <span class="service-name">Unyellowing Midsol</span>
+          <span class="service-price">Rp 40k</span>
+        </div>
+        <div class="service-item">
+          <span class="service-name">Repaint</span>
+          <span class="service-price">Rp 65k-200k</span>
+        </div>
+        <div class="service-item">
+          <span class="service-name">Reglue/Pengeleman</span>
+          <span class="service-price">Rp 20k-50k</span>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>FREE PICK UP & DELIVERY</p>
+      <p>&copy; 2025 Khosuki Laundry Sepatu</p>
+    </footer>
+  </body>
+</html>
