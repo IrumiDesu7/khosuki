@@ -65,6 +65,17 @@
         font-size: 1rem;
         transition: transform 0.2s;
         -webkit-tap-highlight-color: transparent;
+        animation: bounce 2s infinite;
+      }
+
+      @keyframes bounce {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-5px);
+        }
       }
 
       .location-btn:active {
@@ -96,6 +107,14 @@
         padding: 1.5rem;
         display: inline-block;
         box-shadow: 4px 4px 0 var(--yellow);
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+
+      .hours-card.visible {
+        opacity: 1;
+        transform: translateY(0);
       }
 
       .hours-item {
@@ -118,6 +137,14 @@
 
       .service-category {
         margin-bottom: 2rem;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+
+      .service-category.visible {
+        opacity: 1;
+        transform: translateY(0);
       }
 
       .service-category:last-child {
@@ -137,6 +164,15 @@
         padding: 0.8rem 0;
         border-bottom: 2px solid var(--primary);
         gap: 1rem;
+        transition: all 0.3s ease;
+        position: relative;
+      }
+
+      .service-item:hover {
+        transform: translateX(10px);
+        background-color: rgba(35, 87, 137, 0.05);
+        padding: 0.8rem;
+        border-radius: 8px;
       }
 
       .service-name {
@@ -231,7 +267,7 @@
 
     <section class="hours-section">
       <h2>Jam Operasional</h2>
-      <div class="hours-card">
+      <div class="hours-card fade-in">
         <div class="hours-item">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -255,7 +291,7 @@
     <section class="price-section">
       <h2>Price List</h2>
 
-      <div class="service-category">
+      <div class="service-category fade-in">
         <h3>Fast Clean <span class="highlight">3-4 Jam</span></h3>
         <div class="service-item">
           <span class="service-name">Clean Midsol and Upper</span>
@@ -271,7 +307,7 @@
         </div>
       </div>
 
-      <div class="service-category">
+      <div class="service-category fade-in">
         <h3>Deep Clean <span class="highlight">2-3 Hari</span></h3>
         <div class="service-item">
           <span class="service-name">Semua jenis sepatu kecuali boots</span>
@@ -296,7 +332,7 @@
         <div class="note">*Plus Pewangi dan anti bakteri</div>
       </div>
 
-      <div class="service-category">
+      <div class="service-category fade-in">
         <h3>Deep Clean One Day</h3>
         <div class="service-item">
           <span class="service-name"
@@ -306,7 +342,7 @@
         </div>
       </div>
 
-      <div class="service-category">
+      <div class="service-category fade-in">
         <h3>More <span class="highlight">3-7 Hari</span></h3>
         <div class="service-item">
           <span class="service-name">Unyellowing Midsol</span>
@@ -327,5 +363,27 @@
       <p>FREE PICK UP & DELIVERY</p>
       <p>&copy; 2025 Khosuki Laundry Sepatu</p>
     </footer>
+
+    <script>
+      // Add fade-in animation to elements
+      const observerOptions = {
+        threshold: 0.2,
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      }, observerOptions);
+
+      document
+        .querySelectorAll(".service-category, .hours-card")
+        .forEach((element) => {
+          element.classList.add("fade-in");
+          observer.observe(element);
+        });
+    </script>
   </body>
 </html>
