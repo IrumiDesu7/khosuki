@@ -96,36 +96,6 @@
         margin-bottom: 1.5rem;
       }
 
-      .hours-section {
-        text-align: center;
-      }
-
-      .hours-card {
-        background: var(--powder);
-        border: 3px solid var(--primary);
-        border-radius: 15px;
-        padding: 1.5rem;
-        display: inline-block;
-        box-shadow: 4px 4px 0 var(--yellow);
-        opacity: 0;
-        transform: translateY(20px);
-        transition: opacity 0.6s ease, transform 0.6s ease;
-      }
-
-      .hours-card.visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      .hours-item {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.5rem;
-        font-size: 1.2rem;
-        color: var(--primary);
-        font-weight: 600;
-      }
 
 
 
@@ -334,28 +304,6 @@
       </a>
     </header>
 
-    <section class="hours-section">
-      <h2>Jam Operasional</h2>
-      <div class="hours-card fade-in">
-        <div class="hours-item">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <circle cx="12" cy="12" r="10" />
-            <polyline points="12 6 12 12 16 14" />
-          </svg>
-          <span>15:00 - 21:00</span>
-        </div>
-      </div>
-    </section>
 
 
     <section class="feedback-section">
@@ -428,7 +376,7 @@
       }, observerOptions);
 
       document
-        .querySelectorAll(".hours-card, .feedback-card")
+        .querySelectorAll(".feedback-card")
         .forEach((element) => {
           element.classList.add("fade-in");
           observer.observe(element);
