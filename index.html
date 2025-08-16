@@ -98,7 +98,6 @@
 
       .hours-section {
         text-align: center;
-        margin-bottom: 1.5rem;
       }
 
       .hours-card {
@@ -128,85 +127,9 @@
         font-weight: 600;
       }
 
-      .price-section {
-        background: var(--powder);
-        border: 3px solid var(--primary);
-        border-radius: 15px;
-        padding: 1.5rem;
-        box-shadow: 4px 4px 0 var(--yellow);
-      }
 
-      .service-category {
-        margin-bottom: 2rem;
-        opacity: 0;
-        transform: translateY(20px);
-        transition: opacity 0.6s ease, transform 0.6s ease;
-      }
 
-      .service-category.visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
 
-      .service-category:last-child {
-        margin-bottom: 0;
-      }
-
-      .service-category h3 {
-        color: var(--red);
-        font-size: 1.3rem;
-        margin-bottom: 1rem;
-      }
-
-      .service-item {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        padding: 0.8rem 0;
-        border-bottom: 2px solid var(--primary);
-        gap: 1rem;
-        transition: all 0.3s ease;
-        position: relative;
-      }
-
-      .service-item:hover {
-        transform: translateX(10px);
-        background-color: rgba(35, 87, 137, 0.05);
-        padding: 0.8rem;
-        border-radius: 8px;
-      }
-
-      .service-name {
-        flex: 1;
-        font-size: 0.95rem;
-      }
-
-      .service-price {
-        font-weight: bold;
-        color: var(--red);
-        white-space: nowrap;
-        font-size: 0.95rem;
-      }
-
-      .highlight {
-        background-color: var(--yellow);
-        color: var(--black);
-        padding: 0.3rem 0.6rem;
-        border-radius: 6px;
-        font-size: 0.9rem;
-        display: inline-block;
-        margin-left: 0.5rem;
-      }
-
-      .note {
-        font-size: 0.85rem;
-        color: var(--primary);
-        margin-top: 0.8rem;
-        padding: 0.8rem;
-        background: var(--powder);
-        border: 2px solid var(--yellow);
-        border-radius: 6px;
-      }
 
       footer {
         background-color: var(--primary);
@@ -366,14 +289,6 @@
           padding: 2rem;
         }
 
-        .service-name,
-        .service-price {
-          font-size: 1rem;
-        }
-
-        .note {
-          font-size: 0.9rem;
-        }
 
         .feedback-section {
           padding: 2rem;
@@ -442,76 +357,6 @@
       </div>
     </section>
 
-    <section class="price-section">
-      <h2>Price List</h2>
-
-      <div class="service-category fade-in">
-        <h3>Fast Clean <span class="highlight">3-4 Jam</span></h3>
-        <div class="service-item">
-          <span class="service-name">Clean Midsol and Upper</span>
-          <span class="service-price">Rp 25k</span>
-        </div>
-        <div class="service-item">
-          <span class="service-name">Sepatu wanita (Flat Shoes and Heals)</span>
-          <span class="service-price">Rp 20k</span>
-        </div>
-        <div class="note">
-          *Pada sepatu putih cara fastclean tidak akan maksimal pada sepatu.
-          Tanpa pewangi
-        </div>
-      </div>
-
-      <div class="service-category fade-in">
-        <h3>Deep Clean <span class="highlight">2-3 Hari</span></h3>
-        <div class="service-item">
-          <span class="service-name">Semua jenis sepatu kecuali boots</span>
-          <span class="service-price">Rp 35k</span>
-        </div>
-        <div class="service-item">
-          <span class="service-name">Sepatu Boots</span>
-          <span class="service-price">Rp 40k</span>
-        </div>
-        <div class="service-item">
-          <span class="service-name">Leather/Kulit</span>
-          <span class="service-price">Rp 40k</span>
-        </div>
-        <div class="service-item">
-          <span class="service-name">Leather Boots</span>
-          <span class="service-price">Rp 50k</span>
-        </div>
-        <div class="service-item">
-          <span class="service-name">White shoes (dominan putih)</span>
-          <span class="service-price">Rp 45k</span>
-        </div>
-        <div class="note">*Plus Pewangi dan anti bakteri</div>
-      </div>
-
-      <div class="service-category fade-in">
-        <h3>Deep Clean One Day</h3>
-        <div class="service-item">
-          <span class="service-name"
-            >Semua jenis sepatu kecuali boots dan sepatu dominan putih</span
-          >
-          <span class="service-price">Rp 45k</span>
-        </div>
-      </div>
-
-      <div class="service-category fade-in">
-        <h3>More <span class="highlight">3-7 Hari</span></h3>
-        <div class="service-item">
-          <span class="service-name">Unyellowing Midsol</span>
-          <span class="service-price">Rp 40k</span>
-        </div>
-        <div class="service-item">
-          <span class="service-name">Repaint</span>
-          <span class="service-price">Rp 65k-200k</span>
-        </div>
-        <div class="service-item">
-          <span class="service-name">Reglue/Pengeleman</span>
-          <span class="service-price">Rp 20k-50k</span>
-        </div>
-      </div>
-    </section>
 
     <section class="feedback-section">
       <h2>Kritik & Saran</h2>
@@ -583,7 +428,7 @@
       }, observerOptions);
 
       document
-        .querySelectorAll(".service-category, .hours-card, .feedback-card")
+        .querySelectorAll(".hours-card, .feedback-card")
         .forEach((element) => {
           element.classList.add("fade-in");
           observer.observe(element);
