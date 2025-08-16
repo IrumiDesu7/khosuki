@@ -8,6 +8,7 @@
       href="https://fonts.googleapis.com/css2?family=Bungee&display=swap"
       rel="stylesheet"
     />
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
     <style>
       :root {
         --primary: #235789;
@@ -221,6 +222,145 @@
         margin: 0.5rem 0;
       }
 
+      .feedback-section {
+        padding: 1.5rem 1rem;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .feedback-card {
+        background: var(--powder);
+        border: 3px solid var(--primary);
+        border-radius: 15px;
+        padding: 1.5rem;
+        box-shadow: 4px 4px 0 var(--yellow);
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+
+      .feedback-card.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .feedback-form {
+        margin-bottom: 1rem;
+      }
+
+      .form-group {
+        margin-bottom: 1.2rem;
+      }
+
+      .form-group label {
+        display: block;
+        font-weight: 600;
+        color: var(--primary);
+        margin-bottom: 0.5rem;
+        font-size: 0.95rem;
+      }
+
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        padding: 0.8rem;
+        border: 2px solid var(--primary);
+        border-radius: 8px;
+        font-family: inherit;
+        font-size: 0.95rem;
+        background: var(--powder);
+        color: var(--black);
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .form-group input:focus,
+      .form-group textarea:focus {
+        outline: none;
+        border-color: var(--red);
+        box-shadow: 0 0 0 2px rgba(237, 28, 36, 0.1);
+      }
+
+      .form-group textarea {
+        resize: vertical;
+        min-height: 100px;
+      }
+
+      .submit-btn {
+        background: var(--primary);
+        color: var(--powder);
+        border: none;
+        padding: 0.8rem 2rem;
+        border-radius: 50px;
+        font-family: "Bungee", cursive;
+        font-size: 0.9rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        min-width: 140px;
+        position: relative;
+      }
+
+      .submit-btn:hover {
+        background: var(--red);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      .submit-btn:active {
+        transform: translateY(0);
+      }
+
+      .submit-btn:disabled {
+        background: #ccc;
+        cursor: not-allowed;
+        transform: none;
+        box-shadow: none;
+      }
+
+      .loader {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .spinner {
+        width: 16px;
+        height: 16px;
+        border: 2px solid transparent;
+        border-top: 2px solid var(--powder);
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+
+      .feedback-message {
+        padding: 1rem;
+        border-radius: 8px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        text-align: center;
+        margin-top: 1rem;
+      }
+
+      .feedback-message.success {
+        background: #d4edda;
+        color: #155724;
+        border: 2px solid #c3e6cb;
+      }
+
+      .feedback-message.error {
+        background: #f8d7da;
+        color: #721c24;
+        border: 2px solid #f5c6cb;
+      }
+
       @media (min-width: 768px) {
         section {
           padding: 2rem;
@@ -233,6 +373,20 @@
 
         .note {
           font-size: 0.9rem;
+        }
+
+        .feedback-section {
+          padding: 2rem;
+        }
+
+        .feedback-card {
+          padding: 2rem;
+        }
+
+        .form-group label,
+        .form-group input,
+        .form-group textarea {
+          font-size: 1rem;
         }
       }
     </style>
@@ -359,13 +513,63 @@
       </div>
     </section>
 
+    <section class="feedback-section">
+      <h2>Kritik & Saran</h2>
+      <div class="feedback-card fade-in">
+        <form id="feedbackForm" class="feedback-form">
+          <div class="form-group">
+            <label for="customerName">Nama (Opsional)</label>
+            <input 
+              type="text" 
+              id="customerName" 
+              name="name" 
+              placeholder="Masukkan nama Anda"
+            />
+          </div>
+          
+          <div class="form-group">
+            <label for="customerPhone">No. Telepon (Opsional)</label>
+            <input 
+              type="tel" 
+              id="customerPhone" 
+              name="phone" 
+              placeholder="Masukkan nomor telepon"
+            />
+          </div>
+          
+          <div class="form-group">
+            <label for="customerMessage">Pesan *</label>
+            <textarea 
+              id="customerMessage" 
+              name="message" 
+              rows="4" 
+              required 
+              placeholder="Bagikan kritik dan saran Anda untuk membantu kami melayani lebih baik"
+            ></textarea>
+          </div>
+          
+          <button type="submit" class="submit-btn" id="submitBtn">
+            <span class="btn-text">Kirim Pesan</span>
+            <div class="loader" id="loader" style="display: none;">
+              <div class="spinner"></div>
+            </div>
+          </button>
+        </form>
+        
+        <div id="feedbackMessage" class="feedback-message" style="display: none;"></div>
+      </div>
+    </section>
+
     <footer>
       <p>FREE PICK UP & DELIVERY</p>
       <p>&copy; 2025 Khosuki Laundry Sepatu</p>
     </footer>
 
     <script>
-      // Add fade-in animation to elements
+      const supabaseUrl = 'https://bjnzzkkenqpwfacwzduo.supabase.co';
+      const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJqbnp6a2tlbnFwd2ZhY3d6ZHVvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTUyNTczNjYsImV4cCI6MjA3MDgzMzM2Nn0.fw1LVLy67X4B8DFjZ1vkrz_QgtJpMMa4zU1OdI_k0T4';
+      const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+
       const observerOptions = {
         threshold: 0.2,
       };
@@ -379,11 +583,78 @@
       }, observerOptions);
 
       document
-        .querySelectorAll(".service-category, .hours-card")
+        .querySelectorAll(".service-category, .hours-card, .feedback-card")
         .forEach((element) => {
           element.classList.add("fade-in");
           observer.observe(element);
         });
+
+      const feedbackForm = document.getElementById('feedbackForm');
+      const submitBtn = document.getElementById('submitBtn');
+      const btnText = document.querySelector('.btn-text');
+      const loader = document.getElementById('loader');
+      const feedbackMessage = document.getElementById('feedbackMessage');
+
+      function showLoading() {
+        submitBtn.disabled = true;
+        btnText.style.display = 'none';
+        loader.style.display = 'flex';
+      }
+
+      function hideLoading() {
+        submitBtn.disabled = false;
+        btnText.style.display = 'block';
+        loader.style.display = 'none';
+      }
+
+      function showMessage(message, type) {
+        feedbackMessage.textContent = message;
+        feedbackMessage.className = `feedback-message ${type}`;
+        feedbackMessage.style.display = 'block';
+        
+        setTimeout(() => {
+          feedbackMessage.style.display = 'none';
+        }, 5000);
+      }
+
+      feedbackForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const formData = new FormData(feedbackForm);
+        const name = formData.get('name') || null;
+        const phone = formData.get('phone') || null;
+        const message = formData.get('message');
+
+        if (!message.trim()) {
+          showMessage('Pesan tidak boleh kosong!', 'error');
+          return;
+        }
+
+        showLoading();
+
+        try {
+          const { error } = await supabase
+            .from('feedback')
+            .insert([{
+              name: name,
+              phone: phone,
+              message: message.trim()
+            }]);
+
+          if (error) {
+            console.error('Supabase error:', error);
+            showMessage('Gagal mengirim pesan. Silakan coba lagi.', 'error');
+          } else {
+            showMessage('Terima kasih! Pesan Anda telah berhasil dikirim.', 'success');
+            feedbackForm.reset();
+          }
+        } catch (error) {
+          console.error('Network error:', error);
+          showMessage('Terjadi kesalahan jaringan. Silakan coba lagi.', 'error');
+        } finally {
+          hideLoading();
+        }
+      });
     </script>
   </body>
 </html>
